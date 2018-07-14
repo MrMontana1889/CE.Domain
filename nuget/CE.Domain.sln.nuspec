@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CE.Domain</id>
+    <version>2.0.0</version>
+    <title>CE.Domain</title>
+    <authors>Culin Enterprises</authors>
+    <owners>Culin Enterprises</owners>
+    <projectUrl>https://github.com/MrMontana1889</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Domain wrapper for ORMLite.Sqlite</description>
+    <releaseNotes>Initial release of the CE.Domain component.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>CE Domain Support Framework Resource</tags>
+    <dependencies>
+      <dependency id="CE.Resource" version="2.0.0" />
+      <dependency id="CE.Support" version="2.0.0"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\lib\CE.Domain.dll" />
+    <file src="..\lib\CE.Domain.ModelingObjects.dll" />
+    <file src="..\lib\CE.Domain.DataObjects.dll" />
+  </files>
+</package>

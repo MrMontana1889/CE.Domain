@@ -1,0 +1,21 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+// %FileName%
+// Copyright (c) 2018 Culin Enterprises, Incorporated. All Rights Reserved.
+
+extensions: .aspx .ascx
+<%-- 
+%FileName%
+Copyright (c) 2018 Culin Enterprises, Incorporated. All Rights Reserved.
+
+--%>
+extensions: .vb
+' %FileName%
+' Copyright (c) 2018 Culin Enterprises, Incorporated. All Rights Reserved.
+
+extensions:  .xml .config .xsd
+<!--
+%FileName%
+Copyright (c) 2018 Culin Enterprises, Incorporated. All Rights Reserved.
+
+-->
