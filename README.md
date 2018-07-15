@@ -1,27 +1,29 @@
 # Using OrmLite.Sqlite with a Desktop App
 
-There are quite a few resources online on how to use OrmLite with a web-based application.  But there are fewer (and frankly if any) resources on how to set up a desktop application using ServiceStack.OrmLite.Sqlite.
+There are quite a few resources online on how to use OrmLite with a web-based application.  But there are fewer, if any resources on how to set up a desktop application using ServiceStack.OrmLite.Sqlite.
 
 I've created a component that takes care of most of this process.  You only need to create a set of child classes with a few overrides to get going with a desktop application.  Everything else is pretty much taken care of.
 
-This blog post will take you step by step on creating, configuration and writing the necessary classes to get you going.  It will NOT cover any UI aspect.  That will be left for another blog post.
+This readme will take you step by step on creating, configuring and writing the necessary classes to get you going.  It will NOT cover any UI aspect.  That will be left for the future.
 
 # CE.Domain
 
 The component CE.Domain is this component.  It contains the basic infrastructure needed to setup a desktop application using OrmLite.Sqlite.
 
-You can get the component one of two ways.  You can either install the NuGet package by searching for CE.Domain or clone the source code from https://github.com/MrMontana1889/CE.Domain.  For the purpose of this blog post, the NuGet package will be used.
+You can get the component one of two ways.  You can either install the NuGet package by searching for CE.Domain or clone the source code from https://github.com/MrMontana1889/CE.Domain (the current GitHub project you are looking at).  For the purpose of this readme, the NuGet package will be used.
 
 Also note that this NuGet package also uses CE.Support and CE.Resources.  Make sure you are using the latest available version for both of these components.
 
 ## CE.Domain.Inventory
 
-I recently wrote a program for my dad to keep track of "stuff" at home.  It's a basic inventory program.  It's nothing complicated but my CE.Domain component was perfect for this use case.  This blog post will step you through on how to setup a component that uses CE.Domain and allows you to keep track of inventory.  This blog post will not get into the UI aspects but perhaps a future post will contain that information.
+I recently wrote a program for my dad to keep track of "stuff" at home.  It's a basic inventory program.  It's nothing complicated but my CE.Domain component was perfect for this use case.  This readme will step you through on how to setup a component that uses CE.Domain and allows you to keep track of inventory.  This readme will not get into the UI aspects but perhaps in the future I will write a component that allows you to do that.
 
 ## Project Creation
 
 Setup a new .NET Framework class library project named CE.Domain.Inventory (though you may use whatever you wish).
-[caption id="attachment_51" align="alignnone" width="941"]New Project Create a new project named CE.Domain.Inventory[/caption]
+
+![New Project Create a new project named CE.Domain.Inventory](https://culinorg.files.wordpress.com/2018/07/new-project.png)
+
 Rename the default Class1.cs class file to Enumerations.cs.  Inside this file, add the following code:
 
 ```csharp
@@ -96,7 +98,7 @@ Add a new project to you solution named CE.Domain.DataObjects.Inventory.  This p
 
 Once the project is created, add a project reference to CE.Domain.Inventory.  You can also delete the default Class1.cs file that is added automatically.
 
-At this point, add the NuGet package CE.Domain to the new project so it references the appropriate assemblies.  You should also add ServiceStack.OrmLite.Sqlite as well.  Make sure you select "ServiceStack.OrmLite.Sqlite" that comes up in the search results (version 5.1.0 as of the writing of this blog).
+At this point, add the NuGet package CE.Domain to the new project so it references the appropriate assemblies.  You should also add ServiceStack.OrmLite.Sqlite as well.  Make sure you select "ServiceStack.OrmLite.Sqlite" that comes up in the search results (version 5.1.0).
 
 In the CE.Domain.DataObjects.Inventory project, create a new folder and name it Sqlite.  Inside this folder, create a new class and name it InventorySqliteDataConnection.cs.
 
@@ -398,7 +400,7 @@ Once you have these classes created and filled-in the CE.Domain.DataObjects.Inve
 
 Think of the ModelingObjects project as where your business objects are located and the DataObjects project contains the classes that are specific to the data source itself.
 
-There are several classes that need to be added to the CE.Domain.ModelingObjects.Inventory project.  For the purpose of this blog post, I will get into only a few of them.  However, the source code for this solution is attached to this blog post so you can download the source and review it in more detail.
+There are several classes that need to be added to the CE.Domain.ModelingObjects.Inventory project.  For the purpose of this readme, I will get into only a few of them.  However, the source code for this solution will be available so you can download the source and review it in more detail.
 
 Once again, add a new project and name it CE.Domain.ModelingObjects.Inventory.
 
@@ -566,7 +568,7 @@ namespace CE.Domain.Inventory.ModelingObjects.Repositories
 
 Note that in the override for CreateRepository, a switch is used checking the name of the table provided.  If the table name is InventoryItem, then it returns an instance of the InventoryItemRepository.  Otherwise, it calls the base implementation which just returns the generic version of the repository.
 
-There are two more classes to create.  There are several others that are needed but they will not be covered in this blog.  Take a look at the source code for details.
+There are two more classes to create.  There are several others that are needed but they will not be covered in this readme.  Take a look at the source code for details.
 
 Create a new class in the room of the CE.Domain.ModelingObjects.Inventory project and name it InventoryDataRepository.  Here is the code for that class:
 ```csharp
@@ -853,4 +855,4 @@ Or you could create a console application that takes parameters to execute speci
 
 # Source Code
 
-A zip file is part of the CE.Domain project here on GitHub.  You can download the source code for this example there.
+You can download the full source code for this sample [here](https://culinorg.files.wordpress.com/2018/07/ce-domain-inventory1.zip).
