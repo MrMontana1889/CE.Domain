@@ -1,6 +1,6 @@
 # CE.Domain
 
-```
+```csharp
 public struct InventoryTableNames
 {
 	public const string Box = "Box";
