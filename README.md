@@ -27,67 +27,67 @@ Setup a new .NET Framework class library project named CE.Domain.Inventory (thou
 Rename the default Class1.cs class file to Enumerations.cs.  Inside this file, add the following code:
 
 ```csharp
-public struct InventoryTableNames
-{
-	public const string Box = "Box";
-	public const string Location = "Location";
-	public const string Room = "Room";
-	public const string InventoryItem = "InventoryItem";
-}
+    public struct InventoryTableNames
+    {
+        public const string Box = "Box";
+        public const string Location = "Location";
+        public const string Room = "Room";
+        public const string InventoryItem = "InventoryItem";
+    }
 
-public struct InventoryFieldNames
-{
-	public const string Label = "Label";
-	public const string Location = "Location";
-	public const string Room = "Room";
-	public const string Box = "Box";
-	public const string Description = "Description";
-	public const string Keyword1 = "Keyword1";
-	public const string Keyword2 = "Keyword2";
-	public const string Keyword3 = "Keyword3";
-	public const string Keyword4 = "Keyword4";
-	public const string Keyword5 = "Keyword5";
-	public const string LocationId = "LocationId";
-	public const string RoomId = "RoomId";
-	public const string BoxId = "BoxId";
+    public struct InventoryFieldNames
+    {
+        public const string Label = "Label";
+        public const string Location = "Location";
+        public const string Room = "Room";
+        public const string Box = "Box";
+        public const string Description = "Description";
+        public const string Keyword1 = "Keyword1";
+        public const string Keyword2 = "Keyword2";
+        public const string Keyword3 = "Keyword3";
+        public const string Keyword4 = "Keyword4";
+        public const string Keyword5 = "Keyword5";
+        public const string LocationId = "LocationId";
+        public const string RoomId = "RoomId";
+        public const string BoxId = "BoxId";
 
-	public const string FilterDescription = "FilterDescription";
-	public const string FilterKeyword1 = "FilterKeyword1";
-	public const string FilterKeyword2 = "FilterKeyword2";
-	public const string FilterKeyword3 = "FilterKeyword3";
-	public const string FilterKeyword4 = "FilterKeyword4";
-	public const string FilterKeyword5 = "FilterKeyword5";
-	public const string FilterRoom = "FilterRoom";
-	public const string FilterLocation = "FilterLocation";
-	public const string FilterBox = "FilterBox";
-}
+        public const string FilterDescription = "FilterDescription";
+        public const string FilterKeyword1 = "FilterKeyword1";
+        public const string FilterKeyword2 = "FilterKeyword2";
+        public const string FilterKeyword3 = "FilterKeyword3";
+        public const string FilterKeyword4 = "FilterKeyword4";
+        public const string FilterKeyword5 = "FilterKeyword5";
+        public const string FilterRoom = "FilterRoom";
+        public const string FilterLocation = "FilterLocation";
+        public const string FilterBox = "FilterBox";
+    }
 
-public struct InventoryFieldLabelKeys
-{
-	public const string Label = "LabelLabel";
-	public const string Location = "LocationLabel";
-	public const string Room = "RoomLabel";
-	public const string Box = "BoxLabel";
-	public const string Description = "DescriptionLabel";
-	public const string Keyword1 = "Keyword1Label";
-	public const string Keyword2 = "Keyword2Label";
-	public const string Keyword3 = "Keyword3Label";
-	public const string Keyword4 = "Keyword4Label";
-	public const string Keyword5 = "Keyword5Label";
-	public const string LocationId = "LocationIdLabel";
-	public const string RoomId = "RoomIdLabel";
-	public const string BoxId = "BoxIdLabel";
+    public struct InventoryFieldLabelKeys
+    {
+        public const string Label = "LabelLabel";
+        public const string Location = "LocationLabel";
+        public const string Room = "RoomLabel";
+        public const string Box = "BoxLabel";
+        public const string Description = "DescriptionLabel";
+        public const string Keyword1 = "Keyword1Label";
+        public const string Keyword2 = "Keyword2Label";
+        public const string Keyword3 = "Keyword3Label";
+        public const string Keyword4 = "Keyword4Label";
+        public const string Keyword5 = "Keyword5Label";
+        public const string LocationId = "LocationIdLabel";
+        public const string RoomId = "RoomIdLabel";
+        public const string BoxId = "BoxIdLabel";
 
-	public const string FilterDescription = "FilterDescriptionLabel";
-	public const string FilterKeyword1 = "FilterKeyword1Label";
-	public const string FilterKeyword2 = "FilterKeyword2Label";
-	public const string FilterKeyword3 = "FilterKeyword3Label";
-	public const string FilterKeyword4 = "FilterKeyword4Label";
-	public const string FilterKeyword5 = "FilterKeyword5Label";
-	public const string FilterRoom = "FilterRoomLabel";
-	public const string FilterLocation = "FilterLocationLabel";
-	public const string FilterBox = "FilterBoxLabel";
-}
+        public const string FilterDescription = "FilterDescriptionLabel";
+        public const string FilterKeyword1 = "FilterKeyword1Label";
+        public const string FilterKeyword2 = "FilterKeyword2Label";
+        public const string FilterKeyword3 = "FilterKeyword3Label";
+        public const string FilterKeyword4 = "FilterKeyword4Label";
+        public const string FilterKeyword5 = "FilterKeyword5Label";
+        public const string FilterRoom = "FilterRoomLabel";
+        public const string FilterLocation = "FilterLocationLabel";
+        public const string FilterBox = "FilterBoxLabel";
+    }
 ```
 
 The code above just declares some constants that will be used elsewhere for code readability.
@@ -104,39 +104,38 @@ In the CE.Domain.DataObjects.Inventory project, create a new folder and name it 
 
 This class is relatively small and very simple.  Configure the class as such:
 ```csharp
-using CE.Domain.DataObjects;
 using CE.Domain.DataObjects.Sqlite;
 using CE.Domain.DataObjects.Tables;
 using CE.Domain.Inventory.DataObjects.Tables;
 using System.Collections.Generic;
 
-namespace CE.Domain.Inventory.DataObjects.Sqlite
+namespace CE.Domain.DataObjects.Inventory.Sqlite
 {
-	public class InventorySqliteDataConnection : GenericSqliteDataConnection
-	{
-		#region Constructor
-		public InventorySqliteDataConnection()
-		{
+    public class InventorySqliteDataConnection : GenericSqliteDataConnection
+    {
+        #region Constructor
+        public InventorySqliteDataConnection()
+        {
 
-		}
-		#endregion
+        }
+        #endregion
 
-		#region Protected Methods
-		protected override void LoadSchemaImpl()
-		{
-			IList<ICreatableDomainTable> tables = new List<ICreatableDomainTable>();
+        #region Protected Methods
+        protected override void LoadSchemaImpl()
+        {
+            IList<ICreatableDomainTable> tables = new List<ICreatableDomainTable>();
 
-			tables.Add(new InfoTable());
-			tables.Add(new Box());
-			tables.Add(new Room());
-			tables.Add(new Location());
-			tables.Add(new InventoryItem());
+            tables.Add(new InfoTable());
+            tables.Add(new Box());
+            tables.Add(new Room());
+            tables.Add(new Location());
+            tables.Add(new InventoryItem());
 
-			foreach (ICreatableDomainTable table in tables)
-				table.Create(DbConnection);
-		}
-		#endregion
-	}
+            foreach (ICreatableDomainTable table in tables)
+                table.Create(DbConnection);
+        }
+        #endregion
+    }
 }
 ```
 
@@ -161,31 +160,31 @@ using ServiceStack.DataAnnotations;
 
 namespace CE.Domain.Inventory.DataObjects.Tables
 {
-	[Alias(InventoryTableNames.Box)]
-	public class Box : InventoryTableBase, IEditLabeled
-	{
-		#region Constructor
-		public Box() : base(InventoryTableNames.Box) { }
-		#endregion
+    [Alias(InventoryTableNames.Box)]
+    public class Box : InventoryTableBase, IEditLabeled
+    {
+        #region Constructor
+        public Box() : base(InventoryTableNames.Box) { }
+        #endregion
 
-		#region Public Methods
-		public override string ToString() => Label;
-		#endregion
+        #region Public Methods
+        public override string ToString() => Label;
+        #endregion
 
-		#region Public Properties
-		[Ignore]
-		public override int TableTypeID => TableTypeId.Box;
+        #region Public Properties
+        [Ignore]
+        public override int TableTypeID => TableTypeId.Box;
 
-		[AutoIncrement]
-		[Required]
-		[PrimaryKey]
-		public override int Id { get; set; }
+        [AutoIncrement]
+        [Required]
+        [PrimaryKey]
+        public override int Id { get; set; }
 
-		[Required]
-		[CustomField("TEXT")]
-		public string Label { get; set; }
-		#endregion
-	}
+        [Required]
+        [CustomField("TEXT")]
+        public string Label { get; set; }
+        #endregion
+    }
 }
 
 //Room.cs
@@ -196,42 +195,42 @@ using System.Data;
 
 namespace CE.Domain.Inventory.DataObjects.Tables
 {
-	public class Room : InventoryTableBase, IEditLabeled
-	{
-		#region Constructor
-		public Room() : base(InventoryTableNames.Room) { }
-		#endregion
+    public class Room : InventoryTableBase, IEditLabeled
+    {
+        #region Constructor
+        public Room() : base(InventoryTableNames.Room) { }
+        #endregion
 
-		#region Public Methods
-		public override string ToString() => Label;
-		#endregion
+        #region Public Methods
+        public override string ToString() => Label;
+        #endregion
 
-		#region Public Properties
-		[Ignore]
-		public override int TableTypeID => TableTypeId.Room;
+        #region Public Properties
+        [Ignore]
+        public override int TableTypeID => TableTypeId.Room;
 
-		[AutoIncrement]
-		[Required]
-		[PrimaryKey]
-		public override int Id { get; set; }
+        [AutoIncrement]
+        [Required]
+        [PrimaryKey]
+        public override int Id { get; set; }
 
-		[CustomField("TEXT")]
-		[Required]
-		public string Label { get; set; }
-		#endregion
+        [CustomField("TEXT")]
+        [Required]
+        public string Label { get; set; }
+        #endregion
 
-		#region Protected Methods
-		protected override void PostCreateTable(IDbConnection dbConnection)
-		{
-			dbConnection.Insert(new Room { Label = "Office" });
-			dbConnection.Insert(new Room { Label = "Guest" });
-			dbConnection.Insert(new Room { Label = "Master" });
-			dbConnection.Insert(new Room { Label = "Kitchen" });
-			dbConnection.Insert(new Room { Label = "Garage" });
-			dbConnection.Insert(new Room { Label = "Storeroom" });
-		}
-		#endregion
-	}
+        #region Protected Methods
+        protected override void PostCreateTable(IDbConnection dbConnection)
+        {
+            dbConnection.Insert(new Room { Label = "Office" });
+            dbConnection.Insert(new Room { Label = "Guest" });
+            dbConnection.Insert(new Room { Label = "Master" });
+            dbConnection.Insert(new Room { Label = "Kitchen" });
+            dbConnection.Insert(new Room { Label = "Garage" });
+            dbConnection.Insert(new Room { Label = "Storeroom" });
+        }
+        #endregion
+    }
 }
 
 //Location.cs
@@ -242,39 +241,39 @@ using System.Data;
 
 namespace CE.Domain.Inventory.DataObjects.Tables
 {
-	public class Location : InventoryTableBase, IEditLabeled
-	{
-		#region Constructor
-		public Location() : base(InventoryTableNames.Location) { }
-		#endregion
+    public class Location : InventoryTableBase, IEditLabeled
+    {
+        #region Constructor
+        public Location() : base(InventoryTableNames.Location) { }
+        #endregion
 
-		#region Public Methods
-		public override string ToString() => Label;
-		#endregion
+        #region Public Methods
+        public override string ToString() => Label;
+        #endregion
 
-		#region Public Properties
-		[Ignore]
-		public override int TableTypeID => TableTypeId.Location;
+        #region Public Properties
+        [Ignore]
+        public override int TableTypeID => TableTypeId.Location;
 
-		[AutoIncrement]
-		[Required]
-		[PrimaryKey]
-		public override int Id { get; set; }
+        [AutoIncrement]
+        [Required]
+        [PrimaryKey]
+        public override int Id { get; set; }
 
-		[CustomField("TEXT")]
-		[Required]
-		public string Label { get; set; }
-		#endregion
+        [CustomField("TEXT")]
+        [Required]
+        public string Label { get; set; }
+        #endregion
 
-		#region Protected Methods
-		protected override void PostCreateTable(IDbConnection dbConnection)
-		{
-			dbConnection.Insert(new Location { Label = "Floor" });
-			dbConnection.Insert(new Location { Label = "Closet" });
-			dbConnection.Insert(new Location { Label = "Cabinet" });
-		}
-		#endregion
-	}
+        #region Protected Methods
+        protected override void PostCreateTable(IDbConnection dbConnection)
+        {
+            dbConnection.Insert(new Location { Label = "Floor" });
+            dbConnection.Insert(new Location { Label = "Closet" });
+            dbConnection.Insert(new Location { Label = "Cabinet" });
+        }
+        #endregion
+    }
 }
 
 //InventoryTableBase.cs
@@ -283,21 +282,21 @@ using System.Data;
 
 namespace CE.Domain.Inventory.DataObjects.Tables
 {
-	public abstract class InventoryTableBase : DomainTableBase
-	{
-		#region Constructor
-		public InventoryTableBase(string name) : base(name) { }
-		#endregion
+    public abstract class InventoryTableBase : DomainTableBase
+    {
+        #region Constructor
+        public InventoryTableBase(string name) : base(name) { }
+        #endregion
 
-		#region Public Methods
-		public override int Create_Index(IDbConnection dbConnection) => 0;
-		#endregion
+        #region Public Methods
+        public override int Create_Index(IDbConnection dbConnection) => 0;
+        #endregion
 
-		#region Public Properties
-		protected override string IndexName => string.Empty;
-		protected override string IndexFieldName => string.Empty;
-		#endregion
-	}
+        #region Public Properties
+        protected override string IndexName => string.Empty;
+        protected override string IndexFieldName => string.Empty;
+        #endregion
+    }
 }
 
 //InventoryItem.cs
@@ -305,80 +304,77 @@ using ServiceStack.DataAnnotations;
 
 namespace CE.Domain.Inventory.DataObjects.Tables
 {
-	[Alias(InventoryTableNames.InventoryItem)]
-	public class InventoryItem : InventoryTableBase
-	{
-		#region Constructor
-		public InventoryItem() : base(InventoryTableNames.InventoryItem) { }
-		#endregion
+    [Alias(InventoryTableNames.InventoryItem)]
+    public class InventoryItem : InventoryTableBase
+    {
+        #region Constructor
+        public InventoryItem() : base(InventoryTableNames.InventoryItem) { }
+        #endregion
 
-		#region Public Properties
-		[Ignore]
-		public override int TableTypeID => TableTypeId.InventoryItem;
+        #region Public Properties
+        [Ignore]
+        public override int TableTypeID => TableTypeId.InventoryItem;
 
-		[AutoIncrement]
-		[Required]
-		[PrimaryKey]
-		public override int Id { get; set; }
+        [AutoIncrement]
+        [Required]
+        [PrimaryKey]
+        public override int Id { get; set; }
 
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Description { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Description { get; set; }
 
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Keyword1 { get; set;
-		}
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Keyword2 { get; set;
-		}
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Keyword3 { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Keyword1 { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Keyword2 { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Keyword3 { get; set; }
 
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Keyword4 { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Keyword4 { get; set; }
 
-		[CustomField("TEXT")]
-		[Default("")]
-		public string Keyword5 { get; set; }
+        [CustomField("TEXT")]
+        [Default("")]
+        public string Keyword5 { get; set; }
 
-		[References(typeof(Location))]
-		public int LocationId { get; set; }
+        [References(typeof(Location))]
+        public int LocationId { get; set; }
 
-		[References(typeof(Room))]
-		public int RoomId { get; set;
-		}
-		[References(typeof(Box))]
-		public int BoxId { get; set; }
+        [References(typeof(Room))]
+        public int RoomId { get; set; }
+        [References(typeof(Box))]
+        public int BoxId { get; set; }
 
-		[Ignore]
-		public Location Location { get; set; }
+        [Ignore]
+        public Location Location { get; set; }
 
-		[Ignore]
-		public Room Room { get; set; }
+        [Ignore]
+        public Room Room { get; set; }
 
-		[Ignore]
-		public Box Box { get; set; }
-		#endregion
+        [Ignore]
+        public Box Box { get; set; }
+        #endregion
 
-		#region Protected Methods
-		protected override void InitializeFields()
-		{
-			AddField(InventoryFieldNames.Description, typeof(string), InventoryFieldLabelKeys.Description, string.Empty, this);
-			AddField(InventoryFieldNames.Keyword1, typeof(string), InventoryFieldLabelKeys.Keyword1, string.Empty, this);
-			AddField(InventoryFieldNames.Keyword2, typeof(string), InventoryFieldLabelKeys.Keyword2, string.Empty, this);
-			AddField(InventoryFieldNames.Keyword3, typeof(string), InventoryFieldLabelKeys.Keyword3, string.Empty, this);
-			AddField(InventoryFieldNames.Keyword4, typeof(string), InventoryFieldLabelKeys.Keyword4, string.Empty, this);
-			AddField(InventoryFieldNames.Keyword5, typeof(string), InventoryFieldLabelKeys.Keyword5, string.Empty, this);
-			AddField(InventoryFieldNames.RoomId, typeof(int), InventoryFieldLabelKeys.RoomId, 0, this);
-			AddField(InventoryFieldNames.LocationId, typeof(int), InventoryFieldLabelKeys.LocationId, 0, this);
-			AddField(InventoryFieldNames.BoxId, typeof(int), InventoryFieldLabelKeys.BoxId, 0, this);
-		}
-		#endregion
-	}
+        #region Protected Methods
+        protected override void InitializeFields()
+        {
+            AddField(InventoryFieldNames.Description, typeof(string), InventoryFieldLabelKeys.Description, string.Empty, this);
+            AddField(InventoryFieldNames.Keyword1, typeof(string), InventoryFieldLabelKeys.Keyword1, string.Empty, this);
+            AddField(InventoryFieldNames.Keyword2, typeof(string), InventoryFieldLabelKeys.Keyword2, string.Empty, this);
+            AddField(InventoryFieldNames.Keyword3, typeof(string), InventoryFieldLabelKeys.Keyword3, string.Empty, this);
+            AddField(InventoryFieldNames.Keyword4, typeof(string), InventoryFieldLabelKeys.Keyword4, string.Empty, this);
+            AddField(InventoryFieldNames.Keyword5, typeof(string), InventoryFieldLabelKeys.Keyword5, string.Empty, this);
+            AddField(InventoryFieldNames.RoomId, typeof(int), InventoryFieldLabelKeys.RoomId, 0, this);
+            AddField(InventoryFieldNames.LocationId, typeof(int), InventoryFieldLabelKeys.LocationId, 0, this);
+            AddField(InventoryFieldNames.BoxId, typeof(int), InventoryFieldLabelKeys.BoxId, 0, this);
+        }
+        #endregion
+    }
 }
 ```
 
@@ -412,13 +408,13 @@ In the Interfaces.cs file, add the following code:
 ```csharp
 namespace CE.Domain.Inventory.ModelingObjects
 {
-	public interface IInventoryDataRepository : IDataRepository
-	{
-		InventoryItemManager InventoryItemManager { get; }
-		BoxManager BoxManager { get; }
-		RoomManager RoomManager { get; }
-		LocationManager LocationManager { get; }
-	}
+    public interface IInventoryDataRepository : IDataRepository
+    {
+        InventoryItemManager InventoryItemManager { get; }
+        BoxManager BoxManager { get; }
+        RoomManager RoomManager { get; }
+        LocationManager LocationManager { get; }
+    }
 }
 ```
 
@@ -430,99 +426,99 @@ The InventoryItemRepository is the true heart of the component.  This is where t
 
 Use the following code for the InventoryItemRepository class:
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using CE.Domain.DataObjects.Sqlite;
 using CE.Domain.Inventory.DataObjects.Tables;
 using CE.Domain.ModelingObjects.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace CE.Domain.Inventory.ModelingObjects.Repositories
 {
-	public class InventoryItemRepository : GenericTableRepository<InventoryItem>
-	{
-		#region Constructor
-		public InventoryItemRepository(ISqliteDataConnection dataConnection, IDataRepository dataRepository)
-			: base(InventoryTableNames.InventoryItem, dataConnection)
-		{
-			DataRepository = dataRepository;
-		}
-		#endregion
+    public class InventoryItemRepository : GenericTableRepository<InventoryItem>
+    {
+        #region Constructor
+        public InventoryItemRepository(ISqliteDataConnection dataConnection, IDataRepository dataRepository)
+            : base(InventoryTableNames.InventoryItem, dataConnection)
+        {
+            DataRepository = dataRepository;
+        }
+        #endregion
 
-		#region Public Methods
-		public override List<InventoryItem> LoadItems(Expression<Func<InventoryItem, bool>> predicate) => LoadItems(predicate, null);
+        #region Public Methods
+        public override List<InventoryItem> LoadItems(Expression<Func<InventoryItem, bool>> predicate) => LoadItems(predicate, null);
 
-		public List<InventoryItem> LoadItems(Expression<Func<InventoryItem, bool>> predicate, InventoryFilter filter)
-		{
-			var items = base.LoadItems(predicate);
-			List<InventoryItem> retVal = new List<InventoryItem>();
-			foreach (var item in items)
-			{
-				PostLoad(item);
-				if (filter != null)
-				{
-					if (!filter.CheckAll(item))
-						continue;
-				}
-				retVal.Add(item);
-			}
-			return retVal;
-		}
-		public override List<InventoryItem> LoadItems() => LoadItems(null);
+        public List<InventoryItem> LoadItems(Expression<Func<InventoryItem, bool>> predicate, InventoryFilter filter)
+        {
+            var items = base.LoadItems(predicate);
+            List<InventoryItem> retVal = new List<InventoryItem>();
+            foreach (var item in items)
+            {
+                PostLoad(item);
+                if (filter != null)
+                {
+                    if (!filter.CheckAll(item))
+                        continue;
+                }
+                retVal.Add(item);
+            }
+            return retVal;
+        }
+        public override List<InventoryItem> LoadItems() => LoadItems(null);
 
-		public List<InventoryItem> LoadItems(InventoryFilter filter)
-		{
-			var items = base.LoadItems();
-			List<InventoryItem> retVal = new List<InventoryItem>();
-			foreach (var item in items)
-			{
-				PostLoad(item);
-				if (filter != null)
-				{
-					if (!filter.CheckAll(item))
-						continue;
-				}
-				retVal.Add(item);
-			}
-			return retVal;
-		}
-		public override InventoryItem Load(int id)
-		{
-			var retVal = base.Load(id);
-			PostLoad(retVal);
-			return retVal;
-		}
-		#endregion
+        public List<InventoryItem> LoadItems(InventoryFilter filter)
+        {
+            var items = base.LoadItems();
+            List<InventoryItem> retVal = new List<InventoryItem>();
+            foreach (var item in items)
+            {
+                PostLoad(item);
+                if (filter != null)
+                {
+                    if (!filter.CheckAll(item))
+                        continue;
+                }
+                retVal.Add(item);
+            }
+            return retVal;
+        }
+        public override InventoryItem Load(int id)
+        {
+            var retVal = base.Load(id);
+            PostLoad(retVal);
+            return retVal;
+        }
+        #endregion
 
-		#region Protected Methods
-		protected override void PostLoad(InventoryItem item)
-		{
-			int roomId = item.RoomId;
-			int locationId = item.LocationId;
-			int boxId = item.BoxId;
+        #region Protected Methods
+        protected override void PostLoad(InventoryItem item)
+        {
+            int roomId = item.RoomId;
+            int locationId = item.LocationId;
+            int boxId = item.BoxId;
 
-			ITableRepository<Room> roomRepository = DataRepository.GetTableRepositoryFor<Room>(InventoryTableNames.Room);
-			ITableRepository<Location> locationRepository = DataRepository.GetTableRepositoryFor<Location>(InventoryTableNames.Location);
-			ITableRepository<Box> boxRepository = DataRepository.GetTableRepositoryFor<Box>(InventoryTableNames.Box);
+            ITableRepository<Room> roomRepository = DataRepository.GetTableRepositoryFor<Room>(InventoryTableNames.Room);
+            ITableRepository<Location> locationRepository = DataRepository.GetTableRepositoryFor<Location>(InventoryTableNames.Location);
+            ITableRepository<Box> boxRepository = DataRepository.GetTableRepositoryFor<Box>(InventoryTableNames.Box);
 
-			item.Room = new Room();
-			if (roomRepository.Exists(r => r.Id == roomId))
-				item.Room = roomRepository[roomId];
+            item.Room = new Room();
+            if (roomRepository.Exists(r => r.Id == roomId))
+                item.Room = roomRepository[roomId];
 
-			item.Location = new Location();
-			if (locationRepository.Exists(l => l.Id == locationId))
-				item.Location = locationRepository[locationId];
+            item.Location = new Location();
+            if (locationRepository.Exists(l => l.Id == locationId))
+                item.Location = locationRepository[locationId];
 
-			item.Box = new Box();
-			if (boxRepository.Exists(b => b.Id == boxId))
-				item.Box = boxRepository[boxId];
-		}
-		#endregion
+            item.Box = new Box();
+            if (boxRepository.Exists(b => b.Id == boxId))
+                item.Box = boxRepository[boxId];
+        }
+        #endregion
 
-		#region Private Properties
-		private IDataRepository DataRepository { get; set; }
-		#endregion
-	}
+        #region Private Properties
+        private IDataRepository DataRepository { get; set; }
+        #endregion
+    }
 }
 ```
 
@@ -541,28 +537,29 @@ using CE.Domain.ModelingObjects.Repositories;
 
 namespace CE.Domain.Inventory.ModelingObjects.Repositories
 {
-	public class InventoryDataRepositoryFactory : RepositoryFactory
-	{
-		#region Constructor
-		public InventoryDataRepositoryFactory(IDataRepository dataRepository)
-			: base(dataRepository)
-		{
-		}
-		#endregion
+    public class InventoryDataRepositoryFactory : RepositoryFactory
+    {
+        #region Constructor
+        public InventoryDataRepositoryFactory(IDataRepository dataRepository)
+            : base(dataRepository)
+        {
 
-		#region Public Methods
-		public override ITableRepository<TTableType> CreateRepository<TTableType>(string name, ISqliteDataConnection dataConnection)
-		{
-			switch (name)
-			{
-				case InventoryTableNames.InventoryItem:
-					return (ITableRepository<TTableType>)(new InventoryItemRepository(dataConnection, DataRepository));
-				default:
-					return base.CreateRepository<TTableType>(name, dataConnection);
-			}
-		}
-		#endregion
-	}
+        }
+        #endregion
+
+        #region Public Methods
+        public override ITableRepository<TTableType> CreateRepository<TTableType>(string name, ISqliteDataConnection dataConnection)
+        {
+            switch (name)
+            {
+                case InventoryTableNames.InventoryItem:
+                    return (ITableRepository<TTableType>)(new InventoryItemRepository(dataConnection, DataRepository));
+                default:
+                    return base.CreateRepository<TTableType>(name, dataConnection);
+            }
+        }
+        #endregion
+    }
 }
 ```
 
@@ -579,38 +576,41 @@ using CE.Domain.ModelingObjects;
 
 namespace CE.Domain.Inventory.ModelingObjects
 {
-	#region Constructor
-	public InventoryDataRepository(ISqliteDataConnection dataConnection)
-		: base(dataConnection)
-	{
+    public class InventoryDataRepository : DataRepository, IInventoryDataRepository
+    {
+        #region Constructor
+        public InventoryDataRepository(ISqliteDataConnection dataConnection)
+            : base(dataConnection)
+        {
 
-	}
-	#endregion
+        }
+        #endregion
 
-	#region Public Properties
-	public InventoryItemManager InventoryItemManager => _inventoryItemManager
-		?? (_inventoryItemManager = new InventoryItemManager(GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem)));
+        #region Public Properties
+        public InventoryItemManager InventoryItemManager => _inventoryItemManager
+            ?? (_inventoryItemManager = new InventoryItemManager(GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem)));
 
-	public RoomManager RoomManager => _roomManager
-		?? (_roomManager = new RoomManager(GetTableRepositoryFor<Room>(InventoryTableNames.Room)));
+        public RoomManager RoomManager => _roomManager
+            ?? (_roomManager = new RoomManager(GetTableRepositoryFor<Room>(InventoryTableNames.Room)));
 
-	public LocationManager LocationManager => _locationManager 
-		?? (_locationManager = new LocationManager(GetTableRepositoryFor<Location>(InventoryTableNames.Location)));
+        public LocationManager LocationManager => _locationManager
+            ?? (_locationManager = new LocationManager(GetTableRepositoryFor<Location>(InventoryTableNames.Location)));
 
-	public BoxManager BoxManager => _boxManager
-		?? (_boxManager = new BoxManager(GetTableRepositoryFor<Box>(InventoryTableNames.Box)));
-	#endregion
+        public BoxManager BoxManager => _boxManager
+            ?? (_boxManager = new BoxManager(GetTableRepositoryFor<Box>(InventoryTableNames.Box)));
+        #endregion
 
-	#region Protected Methods
-	protected override IRepositoryFactory NewRepositoryFactory() => new InventoryDataRepositoryFactory(this);
-	#endregion
+        #region Protected Methods
+        protected override IRepositoryFactory NewRepositoryFactory() => new InventoryDataRepositoryFactory(this);
+        #endregion
 
-	#region Private Fields
-	private InventoryItemManager _inventoryItemManager;
-	private BoxManager _boxManager;
-	private RoomManager _roomManager;
-	private LocationManager _locationManager;
-	#endregion
+        #region Private Fields
+        private InventoryItemManager _inventoryItemManager;
+        private BoxManager _boxManager;
+        private RoomManager _roomManager;
+        private LocationManager _locationManager;
+        #endregion
+    }
 }
 ```
 
@@ -624,26 +624,26 @@ using CE.Domain.ModelingObjects;
 
 namespace CE.Domain.Inventory.ModelingObjects
 {
-	public class InventoryDataSource : DataSource
-	{
-		#region Constructor
-		public InventoryDataSource()
-		{
+    public class InventoryDataSource : DataSource
+    {
+        #region Constructor
+        public InventoryDataSource()
+        {
 
-		}
-		#endregion
+        }
+        #endregion
 
-		#region Protected Methods
-		protected override IDataRepository NewDataRepository()
-		{
-			return new InventoryDataRepository(DataConnection);
-		}
-		protected override ISqliteDataConnection NewDataConnection()
-		{
-			return new InventorySqliteDataConnection();
-		}
-		#endregion
-	}
+        #region Protected Methods
+        protected override IDataRepository NewDataRepository()
+        {
+            return new InventoryDataRepository(DataConnection);
+        }
+        protected override ISqliteDataConnection NewDataConnection()
+        {
+            return new InventorySqliteDataConnection();
+        }
+        #endregion
+    }
 }
 ```
 
@@ -665,42 +665,44 @@ Rename the default Class1.cs class into InventoryDomainTestFixtureBase.cs.  Use 
 using NUnit.Framework;
 
 ```csharp
+using NUnit.Framework;
+
 namespace CE.Domain.Inventory.Test
 {
     public abstract class InventoryDomainTestFixtureBase
     {
-		#region Constructor
-		public InventoryDomainTestFixtureBase()
-		{
+        #region Constructor
+        public InventoryDomainTestFixtureBase()
+        {
 
-		}
-		#endregion
+        }
+        #endregion
 
-		#region Initialize/Cleanup
-		[SetUp]
-		public void Initialize()
-		{
-			InitializeLicense();
-			InitializeImpl();
-		}
-		[TearDown]
-		public void Cleanup()
-		{
-			CleanupImpl();
-		}
-		#endregion
+        #region Initialize/Cleanup
+        [SetUp]
+        public void Initialize()
+        {
+            InitializeLicense();
+            InitializeImpl();
+        }
+        [TearDown]
+        public void Cleanup()
+        {
+            CleanupImpl();
+        }
+        #endregion
 
-		#region Protected Methods
-		protected virtual void InitializeImpl() { }
-		protected virtual void CleanupImpl() { }
-		protected void InitializeLicense() { }
-		#endregion
+        #region Protected Methods
+        protected virtual void InitializeImpl() { }
+        protected virtual void CleanupImpl() { }
+        protected void InitializeLicense() { }
+        #endregion
 
-		#region Protected Properties
-		protected IRepositoryDataSource DataSource { get; set; }
-		protected string Filename { get; set; }
-		#endregion
-	}
+        #region Protected Properties
+        protected IRepositoryDataSource DataSource { get; set; }
+        protected string Filename { get; set; }
+        #endregion
+    }
 }
 ```
 
@@ -715,56 +717,56 @@ Here is the code for the unit test.  I will then go thru it so you understand wh
 [Test]
 public void Test_C_In_CRUD()
 {
-	using (DataSource dataSource = new InventoryDataSource())
-	{
-		Filename = Path.GetTempFileName();
-		File.Delete(Filename);
-		File.Exists(Filename).Should().BeFalse();
+    using (DataSource dataSource = new InventoryDataSource())
+    {
+        Filename = Path.GetTempFileName();
+        File.Delete(Filename);
+        File.Exists(Filename).Should().BeFalse();
 
-		dataSource.New(Filename);
-		dataSource.IsOpen().Should().BeTrue();
+        dataSource.New(Filename);
+        dataSource.IsOpen().Should().BeTrue();
 
-		ITableRepository<Box> boxRepository = dataSource.DataRepository.GetTableRepositoryFor<Box>(InventoryTableNames.Box);
-		boxRepository.Should().NotBeNull();
+        ITableRepository<Box> boxRepository = dataSource.DataRepository.GetTableRepositoryFor<Box>(InventoryTableNames.Box);
+        boxRepository.Should().NotBeNull();
 
-		Box box = new Box { Label = "A1" };
-		boxRepository.Save(box);
-		box.Id.Should().NotBe(0);
+        Box box = new Box { Label = "A1" };
+        boxRepository.Save(box);
+        box.Id.Should().NotBe(0);
 
-		ITableRepository<Room> roomRepository = dataSource.DataRepository.GetTableRepositoryFor<Room>(InventoryTableNames.Room);
-		roomRepository.Should().NotBeNull();
+        ITableRepository<Room> roomRepository = dataSource.DataRepository.GetTableRepositoryFor<Room>(InventoryTableNames.Room);
+        roomRepository.Should().NotBeNull();
 
-		Room kitchen = roomRepository.Find(r => r.Label == "Kitchen");
-		kitchen.Should().NotBeNull("Kitchen not found");
+        Room kitchen = roomRepository.Find(r => r.Label == "Kitchen");
+        kitchen.Should().NotBeNull("Kitchen not found");
 
-		ITableRepository<Location> locationRepository = dataSource.DataRepository.GetTableRepositoryFor<Location>(InventoryTableNames.Location);
-		locationRepository.Should().NotBeNull();
+        ITableRepository<Location> locationRepository = dataSource.DataRepository.GetTableRepositoryFor<Location>(InventoryTableNames.Location);
+        locationRepository.Should().NotBeNull();
 
-		Location floor = locationRepository.Find(l => l.Label == "Floor");
+        Location floor = locationRepository.Find(l => l.Label == "Floor");
 
-		InventoryItem item = new InventoryItem
-		{
-			Description = "Test1",
-			Keyword1 = "1",
-			Keyword2 = "2",
-			Keyword3 = "3",
-			Keyword4 = "4",
-			Keyword5 = "5",
-			Location = floor,
-			Room = kitchen,
-		};
+        InventoryItem item = new InventoryItem
+        {
+            Description = "Test1",
+            Keyword1 = "1",
+            Keyword2 = "2",
+            Keyword3 = "3",
+            Keyword4 = "4",
+            Keyword5 = "5",
+            Location = floor,
+            Room = kitchen,
+        };
 
-		ITableRepository<InventoryItem> inventoryRepository = dataSource.DataRepository.GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem);
-		inventoryRepository.Should().NotBeNull();
+        ITableRepository<InventoryItem> inventoryRepository = dataSource.DataRepository.GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem);
+        inventoryRepository.Should().NotBeNull();
 
-		inventoryRepository.Save(item);
-		item.Id.Should().NotBe(0);
+        inventoryRepository.Save(item);
+        item.Id.Should().NotBe(0);
 
-		InventoryItem newItem = inventoryRepository[item.Id];
-		newItem.Should().NotBeNull();
+        InventoryItem newItem = inventoryRepository[item.Id];
+        newItem.Should().NotBeNull();
 
-		newItem.Should().NotBeSameAs(item);
-	}
+        newItem.Should().NotBeSameAs(item);
+    }
 }
 ```
 
