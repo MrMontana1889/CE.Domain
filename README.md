@@ -853,6 +853,6 @@ At this point, you now have a component that uses the CE.Domain NuGet package th
 
 Or you could create a console application that takes parameters to execute specific commands.  For example, you could have an "ADDBOX" command to add a new box.  The next parameter would be the label.  You could have an "UPDATEBOX" and the next two commands would be the old label and label.  If the old label is found, it is updated to the new label.  This is just an example of what you could do.  Of course you will probably need a command to "open" a data source in order to persist the data.  But I leave it to you to figure out how you want to implement the UI.
 
-# Source Code
+# Source Code 
 
 You can download the full source code for this sample [here](https://culinorg.files.wordpress.com/2018/07/ce-domain-inventory1.zip).
