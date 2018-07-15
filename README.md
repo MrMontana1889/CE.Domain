@@ -855,4 +855,4 @@ Or you could create a console application that takes parameters to execute speci
 
 # Source Code 
 
-You can download the full source code for this sample [here](https://culinorg.files.wordpress.com/2018/07/ce-domain-inventory1.zip).
+You can download the full source code for this sample [here](https://culinorg.files.wordpress.com/2018/07/ce-domain-inventory2.zip).
