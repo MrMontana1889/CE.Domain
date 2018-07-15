@@ -579,38 +579,38 @@ using CE.Domain.ModelingObjects;
 
 namespace CE.Domain.Inventory.ModelingObjects
 {
-		#region Constructor
-		public InventoryDataRepository(ISqliteDataConnection dataConnection)
-			: base(dataConnection)
-		{
+	#region Constructor
+	public InventoryDataRepository(ISqliteDataConnection dataConnection)
+		: base(dataConnection)
+	{
 
-		}
-		#endregion
+	}
+	#endregion
 
-		#region Public Properties
-		public InventoryItemManager InventoryItemManager => _inventoryItemManager
-			?? (_inventoryItemManager = new InventoryItemManager(GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem)));
+	#region Public Properties
+	public InventoryItemManager InventoryItemManager => _inventoryItemManager
+		?? (_inventoryItemManager = new InventoryItemManager(GetTableRepositoryFor<InventoryItem>(InventoryTableNames.InventoryItem)));
 
-		public RoomManager RoomManager => _roomManager
-			?? (_roomManager = new RoomManager(GetTableRepositoryFor<Room>(InventoryTableNames.Room)));
+	public RoomManager RoomManager => _roomManager
+		?? (_roomManager = new RoomManager(GetTableRepositoryFor<Room>(InventoryTableNames.Room)));
 
-		public LocationManager LocationManager => _locationManager 
-			?? (_locationManager = new LocationManager(GetTableRepositoryFor<Location>(InventoryTableNames.Location)));
+	public LocationManager LocationManager => _locationManager 
+		?? (_locationManager = new LocationManager(GetTableRepositoryFor<Location>(InventoryTableNames.Location)));
 
-		public BoxManager BoxManager => _boxManager
-			?? (_boxManager = new BoxManager(GetTableRepositoryFor<Box>(InventoryTableNames.Box)));
-		#endregion
+	public BoxManager BoxManager => _boxManager
+		?? (_boxManager = new BoxManager(GetTableRepositoryFor<Box>(InventoryTableNames.Box)));
+	#endregion
 
-		#region Protected Methods
-		protected override IRepositoryFactory NewRepositoryFactory() => new InventoryDataRepositoryFactory(this);
-		#endregion
+	#region Protected Methods
+	protected override IRepositoryFactory NewRepositoryFactory() => new InventoryDataRepositoryFactory(this);
+	#endregion
 
-		#region Private Fields
-		private InventoryItemManager _inventoryItemManager;
-		private BoxManager _boxManager;
-		private RoomManager _roomManager;
-		private LocationManager _locationManager;
-		#endregion
+	#region Private Fields
+	private InventoryItemManager _inventoryItemManager;
+	private BoxManager _boxManager;
+	private RoomManager _roomManager;
+	private LocationManager _locationManager;
+	#endregion
 }
 ```
 
