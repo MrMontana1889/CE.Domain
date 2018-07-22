@@ -37,7 +37,7 @@ namespace CE.Domain.DataObjects
         #region Protected Properties
         protected override string SchemaInfoTableName
         {
-            get { return SchemaTableName.SETTING_V1; }
+            get { return CoreSchemaTableName.SETTING_V1; }
         }
         #endregion
     }

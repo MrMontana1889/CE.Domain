@@ -40,11 +40,11 @@
     <AssemblyOriginatorKeyFile>..\..\..\..\culin.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CE.Resource, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\CE.Resource.2.0.0\lib\net472\CE.Resource.dll</HintPath>
+    <Reference Include="CE.Resource, Version=2.0.0.1, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\CE.Resource.2.0.0.1\lib\net472\CE.Resource.dll</HintPath>
     </Reference>
-    <Reference Include="CE.Support, Version=2.0.0.2, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\CE.Support.2.0.0.2\lib\net472\CE.Support.dll</HintPath>
+    <Reference Include="CE.Support, Version=2.0.0.3, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\CE.Support.2.0.0.3\lib\net45\CE.Support.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.Common.5.1.0\lib\net45\ServiceStack.Common.dll</HintPath>
@@ -87,6 +87,7 @@
     <Compile Include="Tables\Usage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="CE.Domain.DataObjects.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>

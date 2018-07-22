@@ -107,7 +107,7 @@ namespace CE.Domain.ModelingObjects
             {
                 if (IsOpen() && _settingRepository == null)
                 {
-                    _settingRepository = DataRepository.GetTableRepositoryFor<Setting>(SchemaTableName.SETTING_V1);
+                    _settingRepository = DataRepository.GetTableRepositoryFor<Setting>(CoreSchemaTableName.SETTING_V1);
                 }
                 return _settingRepository;
             }

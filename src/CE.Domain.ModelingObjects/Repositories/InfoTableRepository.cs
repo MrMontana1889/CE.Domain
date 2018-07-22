@@ -11,7 +11,7 @@ namespace CE.Domain.ModelingObjects.Repositories
     {
         #region Constructor
         public InfoTableRepository(ISqliteDataConnection dataConnection)
-            : base(SchemaTableName.INFOTABLE_V1, dataConnection)
+            : base(CoreSchemaTableName.INFOTABLE_V1, dataConnection)
         {
 
         }

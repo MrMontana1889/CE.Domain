@@ -6,12 +6,12 @@ using ServiceStack.Model;
 
 namespace CE.Domain.DataObjects.Tables
 {
-    [Alias(SchemaTableName.SETTING_V1)]
+    [Alias(CoreSchemaTableName.SETTING_V1)]
     public class Setting : DomainTableBase, IHasId<int>
     {
         #region Constructor
         public Setting()
-            : base(SchemaTableName.SETTING_V1)
+            : base(CoreSchemaTableName.SETTING_V1)
         {
 
         }
@@ -26,7 +26,7 @@ namespace CE.Domain.DataObjects.Tables
 		[Required]
         [PrimaryKey]
         [AutoIncrement]
-        [Alias(SchemaFieldName.SETTINGID)]
+        [Alias(CoreSchemaFieldName.SETTINGID)]
         public override int Id
         {
             get;
@@ -34,7 +34,7 @@ namespace CE.Domain.DataObjects.Tables
         }
         [Required]
         [CustomField("TEXT COLLATE NOCASE")]
-        [Alias(SchemaFieldName.SETTINGNAME)]
+        [Alias(CoreSchemaFieldName.SETTINGNAME)]
         [Unique]
         public string SettingName
         {
@@ -42,7 +42,7 @@ namespace CE.Domain.DataObjects.Tables
             set;
         }
         [CustomField("TEXT")]
-        [Alias(SchemaFieldName.SETTINGVALUE)]
+        [Alias(CoreSchemaFieldName.SETTINGVALUE)]
         public string SettingValue
         {
             get;
@@ -53,11 +53,11 @@ namespace CE.Domain.DataObjects.Tables
         #region Protected Properties
         protected override string IndexName
         {
-            get { return StandardIndexName.Index_Setting_SettingName; }
+            get { return CoreIndexNames.Index_Setting_SettingName; }
         }
         protected override string IndexFieldName
         {
-            get { return SchemaFieldName.SETTINGNAME; }
+            get { return CoreSchemaFieldName.SETTINGNAME; }
         }
         #endregion
     }

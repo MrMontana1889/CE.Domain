@@ -204,7 +204,7 @@ namespace CE.Domain.Test.ModelingObjects
                     Assert.IsTrue(table.IsNew);
                 }
 
-                Assert.IsFalse(dataSource.GetDataConnection().DbConnection.TableExists(SchemaTableName.SETTING_V1));
+                Assert.IsFalse(dataSource.GetDataConnection().DbConnection.TableExists(CoreSchemaTableName.SETTING_V1));
 
                 dataSource.Close();
             }

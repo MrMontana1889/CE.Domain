@@ -38,14 +38,14 @@ namespace CE.Domain.Test.ModelingObjects.Repositories.Generic
         }
         protected override string GetSelectStatement(int tableID)
         {
-            return string.Format("SELECT * FROM {0} WHERE {1}={2}", TableName, SchemaFieldName.INFOID, tableID);
+            return string.Format("SELECT * FROM {0} WHERE {1}={2}", TableName, CoreSchemaFieldName.INFOID, tableID);
         }
         #endregion
 
         #region Protected Properties
         protected override string TableName
         {
-            get { return SchemaTableName.INFOTABLE_V1; }
+            get { return CoreSchemaTableName.INFOTABLE_V1; }
         }
         #endregion
     }
