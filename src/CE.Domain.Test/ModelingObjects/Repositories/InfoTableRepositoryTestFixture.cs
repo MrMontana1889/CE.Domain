@@ -54,7 +54,7 @@ namespace CE.Domain.Test.ModelingObjects.Repositories
         [Test]
         public void TestInfotableRepository()
         {
-            ITableRepository<InfoTable> repository = DataSource.DataRepository.GetTableRepositoryFor<InfoTable>(SchemaTableName.INFOTABLE_V1);
+            ITableRepository<InfoTable> repository = DataSource.DataRepository.GetTableRepositoryFor<InfoTable>(CoreSchemaTableName.INFOTABLE_V1);
             repository.Should().NotBeNull();
 
             var items = repository.Items();

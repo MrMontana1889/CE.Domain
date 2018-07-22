@@ -83,9 +83,9 @@ namespace CE.Domain.Test.ModelingObjects
                 dataSource.New(filename);
                 dataSource.IsOpen().Should().BeTrue();
 
-                dataSource.GetDataConnection().DbConnection.TableExists(SchemaTableName.SETTING_V1).Should().BeTrue();
-                dataSource.GetDataConnection().DbConnection.TableExists(SchemaTableName.USAGE_V1).Should().BeTrue();
-                dataSource.GetDataConnection().DbConnection.TableExists(SchemaTableName.INFOTABLE_V1).Should().BeFalse();
+                dataSource.GetDataConnection().DbConnection.TableExists(CoreSchemaTableName.SETTING_V1).Should().BeTrue();
+                dataSource.GetDataConnection().DbConnection.TableExists(CoreSchemaTableName.USAGE_V1).Should().BeTrue();
+                dataSource.GetDataConnection().DbConnection.TableExists(CoreSchemaTableName.INFOTABLE_V1).Should().BeFalse();
             }
         }
         [Test]

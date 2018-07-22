@@ -41,11 +41,11 @@
     <AssemblyOriginatorKeyFile>..\..\..\..\culin.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CE.Resource, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\CE.Resource.2.0.0\lib\net472\CE.Resource.dll</HintPath>
+    <Reference Include="CE.Resource, Version=2.0.0.1, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\CE.Resource.2.0.0.1\lib\net472\CE.Resource.dll</HintPath>
     </Reference>
-    <Reference Include="CE.Support, Version=2.0.0.2, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\CE.Support.2.0.0.2\lib\net472\CE.Support.dll</HintPath>
+    <Reference Include="CE.Support, Version=2.0.0.3, Culture=neutral, PublicKeyToken=bd8139160a75b2cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\CE.Support.2.0.0.3\lib\net45\CE.Support.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -85,6 +85,7 @@
     <Compile Include="StandardAttributeName.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Domain.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>

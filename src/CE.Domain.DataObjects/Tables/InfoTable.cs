@@ -6,12 +6,12 @@ using ServiceStack.Model;
 
 namespace CE.Domain.DataObjects.Tables
 {
-    [Alias(SchemaTableName.INFOTABLE_V1)]
+    [Alias(CoreSchemaTableName.INFOTABLE_V1)]
     public class InfoTable : DomainTableBase, IHasId<int>
     {
         #region Constructor
         public InfoTable()
-            : base(SchemaTableName.INFOTABLE_V1)
+            : base(CoreSchemaTableName.INFOTABLE_V1)
         {
             InfoName = string.Empty;
             Value = string.Empty;
@@ -24,7 +24,7 @@ namespace CE.Domain.DataObjects.Tables
 		{
 			get { return Domain.TableTypeId.InfoTable; }
 		}
-		[Alias(SchemaFieldName.INFOID)]
+		[Alias(CoreSchemaFieldName.INFOID)]
         [PrimaryKey]
         [AutoIncrement]
         [Required]
@@ -33,7 +33,7 @@ namespace CE.Domain.DataObjects.Tables
             get;
             set;
         }
-        [Alias(SchemaFieldName.INFONAME)]
+        [Alias(CoreSchemaFieldName.INFONAME)]
         [Required]
         [Unique]
         [CustomField("TEXT COLLATE NOCASE")]
@@ -42,7 +42,7 @@ namespace CE.Domain.DataObjects.Tables
             get;
             set;
         }
-        [Alias(SchemaFieldName.INFOVALUE)]
+        [Alias(CoreSchemaFieldName.INFOVALUE)]
         [Required]
         [CustomField("TEXT")]
         public string Value
@@ -55,11 +55,11 @@ namespace CE.Domain.DataObjects.Tables
         #region Protected Properties
         protected override string IndexName
         {
-            get { return StandardIndexName.Index_InfoTable_InfoName; }
+            get { return CoreIndexNames.Index_InfoTable_InfoName; }
         }
         protected override string IndexFieldName
         {
-            get { return SchemaFieldName.INFONAME; }
+            get { return CoreSchemaFieldName.INFONAME; }
         }
         #endregion
     }

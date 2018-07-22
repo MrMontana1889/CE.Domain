@@ -181,7 +181,7 @@ namespace CE.Domain.DataObjects.Sqlite
         #region Protected Properties
         protected virtual string SchemaInfoTableName
         {
-            get { return SchemaTableName.INFOTABLE_V1; }
+            get { return CoreSchemaTableName.INFOTABLE_V1; }
         }
         protected string Filename
         {

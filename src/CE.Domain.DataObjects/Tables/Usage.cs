@@ -6,12 +6,12 @@ using ServiceStack.Model;
 
 namespace CE.Domain.DataObjects.Tables
 {
-    [Alias(SchemaTableName.USAGE_V1)]
+    [Alias(CoreSchemaTableName.USAGE_V1)]
     public class Usage : DomainTableBase, IHasId<int>
     {
         #region Constructor
         public Usage()
-            : base(SchemaTableName.USAGE_V1)
+            : base(CoreSchemaTableName.USAGE_V1)
         {
 
         }
@@ -26,7 +26,7 @@ namespace CE.Domain.DataObjects.Tables
 		[Required]
         [PrimaryKey]
         [AutoIncrement]
-        [Alias(SchemaFieldName.USAGEID)]
+        [Alias(CoreSchemaFieldName.USAGEID)]
         public override int Id
         {
             get;
@@ -34,7 +34,7 @@ namespace CE.Domain.DataObjects.Tables
         }
         [Required]
         [CustomField("TEXT")]
-        [Alias(SchemaFieldName.USAGEDATE)]
+        [Alias(CoreSchemaFieldName.USAGEDATE)]
         public string UsageDate
         {
             get;
@@ -42,7 +42,7 @@ namespace CE.Domain.DataObjects.Tables
         }
         [Required]
         [CustomField("TEXT")]
-        [Alias(SchemaFieldName.JSONCONTENT)]
+        [Alias(CoreSchemaFieldName.JSONCONTENT)]
         public string JSONContent
         {
             get;
@@ -53,11 +53,11 @@ namespace CE.Domain.DataObjects.Tables
         #region Protected Properties
         protected override string IndexName
         {
-            get { return StandardIndexName.Index_Usage_Date; }
+            get { return CoreIndexNames.Index_Usage_Date; }
         }
         protected override string IndexFieldName
         {
-            get { return SchemaFieldName.USAGEDATE; }
+            get { return CoreSchemaFieldName.USAGEDATE; }
         }
         #endregion
     }
